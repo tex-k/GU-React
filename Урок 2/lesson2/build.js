@@ -70,12 +70,42 @@
 let name = __webpack_require__(1);
 name();
 
+let date = __webpack_require__(2);
+date.write();
+
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
 module.exports = () => {
     alert('Пивоваров Алексей Александрович');
+};
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+module.exports = {
+    write: () => {
+        const div = document.createElement('div');
+        div.style.width = "100px";
+        div.style.height = "50px";
+        div.style.backgroundColor = "green";
+        div.style.borderRadius = "10px";
+        div.style.boxSizing = 'border-box';
+        div.style.paddingTop = "7px";
+        div.style.textAlign = "center";
+        div.style.color = 'blue';
+        div.style.fontSize = "30px";
+        div.innerText = 'Дата';
+        div.addEventListener("mouseover", function () {
+            div.style.cursor = "pointer";
+        });
+        div.addEventListener("click", function () {
+            alert(new Date());
+        });
+        document.body.appendChild(div);
+    }
 };
 
 /***/ })
