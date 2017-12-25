@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Блог</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.production.min.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+<div id="blogPage"></div>
+
+<script type="text/babel">
+
+    class Item extends React.Component {
+        link = this.props.item[1] + '.html';
+        render() {
+            return (
+                    <li className="menu__item"><a className="menu__link" href={this.link}>{this.props.item[0]}</a></li>
+            );
+        }
+    }
+
+    class Menu extends React.Component {
+        render() {
+            return (
+                    <ul className="menu">
+                        {
+                            this.props.items.map((item) => <Item item={item}/>)
+                        }
+                    </ul>
+            );
+        }
+    }
+
+    class Button extends React.Component {
+        render() {
+            return (
+                    <a className="button" href="">Войти</a>
+            );
+        }
+    }
+
+    class Blog extends React.Component {
+        render() {
+            return (
+                    <div className="blog">
+                        <h2 className="blog__title">{this.props.blog.title}</h2>
+                        <div className="blog__text">{this.props.blog.text}</div>
+                    </div>
+            );
+        }
+    }
+
+    class Blogs extends React.Component {
+        render() {
+            return (
+                    <div className="blogs">
+                        {
+                            this.props.blogs.map((blog) => <Blog blog={blog}/>)
+                        }
+                    </div>
+            );
+        }
+    }
+
+    class BlogPage extends React.Component {
+        render() {
+            return (
+                    <div className="blogPage">
+                        <Menu items={this.props.items}/>
+                        <Button/>
+                        <Blogs blogs={blogs}/>
+                    </div>
+            );
+        }
+    }
+
+    let items = [
+        ['Главная', 'main'],
+        ['Блог', 'blog'],
+        ['Комментарии', 'comments'],
+        ['Пользователи', 'users']
+    ];
+    let blog1 = {
+        title: 'Блог1',
+        text: 'text1'
+    };
+    let blog2 = {
+        title: 'Блог2',
+        text: 'text2'
+    };
+    let blogs = [
+        blog1,
+        blog2
+    ];
+
+    ReactDOM.render(
+            <BlogPage items={items} blogs={blogs}/>,
+        document.getElementById('blogPage')
+    );
+</script>
+</body>
+</html>
