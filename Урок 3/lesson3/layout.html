@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.production.min.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+<div id="mainPage"></div>
+
+<script type="text/babel">
+
+    class Item extends React.Component {
+        render() {
+            return (
+                    <li className="menu__item"><a className="menu__link" href="">{this.props.item}</a></li>
+            );
+        }
+    }
+
+    class Menu extends React.Component {
+        render() {
+            return (
+                    <ul className="menu">
+                        {
+                            this.props.items.map((item) => <Item item={item}/>)
+                        }
+                    </ul>
+            );
+        }
+    }
+
+    class Button extends React.Component {
+        render() {
+            return (
+                    <a className="button" href="">Войти</a>
+            );
+        }
+    }
+
+    class Article extends React.Component {
+        render() {
+            return (
+                    <div className="article">
+                        <h2 className="article__title">{this.props.article.title}</h2>
+                        <div className="article__text">{this.props.article.text}</div>
+                    </div>
+            );
+        }
+    }
+
+    class Articles extends React.Component {
+        render() {
+            return (
+                    <div className="articles">
+                        {
+                            this.props.articles.map((article) => <Article article={article}/>)
+                        }
+                    </div>
+            );
+        }
+    }
+
+    class MainPage extends React.Component {
+        render() {
+            return (
+                    <div className="mainPage">
+                        <Menu items={this.props.items}/>
+                        <Button/>
+                        <Articles articles={articles}/>
+                    </div>
+            );
+        }
+    }
+
+    let items = ['item1', 'item2'];
+    let article1 = {
+        title: 'article1',
+        text: 'text1'
+    };
+    let article2 = {
+        title: 'article2',
+        text: 'text2'
+    };
+    let articles = [
+        article1,
+        article2
+    ];
+
+    ReactDOM.render(
+        <MainPage items={items} articles={articles}/>,
+        document.getElementById('mainPage')
+    );
+</script>
+</body>
+</html>
