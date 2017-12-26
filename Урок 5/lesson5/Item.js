@@ -1,3 +1,5 @@
+import React from 'react';
+
 class Item extends React.Component {
     link = this.props.item[1] + '.html';
     render() {
