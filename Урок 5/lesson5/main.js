@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom';
+import MainPage from './MainPage';
 
 let items = [
     ['Главная', 'main'],

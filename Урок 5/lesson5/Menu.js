@@ -1,4 +1,5 @@
 import React from 'react';
+import Item from './Item';
 
 class Menu extends React.Component {
     render() {
