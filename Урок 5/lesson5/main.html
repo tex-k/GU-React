@@ -14,55 +14,6 @@
 
 <script type="text/babel">
 
-    class Item extends React.Component {
-        link = this.props.item[1] + '.html';
-        render() {
-            return (
-                    <li className="menu__item"><a className="menu__link" href={this.link}>{this.props.item[0]}</a></li>
-            );
-        }
-    }
-
-    class Menu extends React.Component {
-        render() {
-            return (
-                    <ul className="menu">
-                        {
-                            this.props.items.map((item) => <Item item={item}/>)
-                        }
-                    </ul>
-            );
-        }
-    }
-
-    class Button extends React.Component {
-        render() {
-            return (
-                    <a className="button" href="">Войти</a>
-            );
-        }
-    }
-
-    class MainContent extends React.Component {
-        render() {
-            return (
-                <div className="mainPage__content">{this.props.content}</div>
-            );
-        }
-    }
-
-    class MainPage extends React.Component {
-        render() {
-            return (
-                    <div className="mainPage">
-                        <Menu items={this.props.items}/>
-                        <Button/>
-                        <MainContent content={this.props.content}/>
-                    </div>
-            );
-        }
-    }
-
     let items = [
         ['Главная', 'main'],
         ['Блог', 'blog'],
