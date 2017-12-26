@@ -7,7 +7,7 @@ module.exports = {
             }
         ]
     },
-    entry: './Main.html',
+    entry: './main.js',
     output: {
         filename: 'build.js'
     }
